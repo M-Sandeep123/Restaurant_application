@@ -52,6 +52,76 @@ exports.restFetchData = async (req, res) => {
         console.log("Error while fetching the restaurant data", err.message);
         res.status(500).send({
             message: "Some error occured while fetching the Restaurants"
+        });
+    }
+}
+
+exports.getCategory = async (req, res) => {
+    /**
+     * this controller will return the all kinds category of restaurant in database
+     */
+    try {
+        const set = new Set();
+
+        const obj = await Restaurant.find();
+
+        obj.forEach(val => {
+            set.add(val.category);
+        });
+        console.log(set);
+        const arr = [];
+        set.forEach(ele=>{
+            arr.push(ele);
         })
+        res.status(200).send(arr);
+    } catch (err) {
+        console.log("Error while fetching the categor", err.message);
+        res.status(500).send({
+            message: "Some error occurred while fetching Categories"
+        });
+    }
+
+}
+
+exports.getDataOnCategory = async (req,res)=>{
+    try{
+        const parameter = req.params.categoryName;
+        const dataObj = await Restaurant.find({category : parameter});
+        res.status(200).send(dataObj);
+
+    }catch(err){
+        console.log("Error while fetching the restaurant data", err.message);
+        res.status(500).send({
+            message: "Some error occured while fetching the Restaurants"
+        });
+    }
+}
+
+exports.getDataOnId = async (req,res)=>{
+    try{
+        const id = req.params.id;
+        const pId = new Object(id);
+        const dataObj = await Restaurant.find({_id : pId});
+        res.status(200).send(dataObj);
+
+    }catch(err){
+        console.log("Error while fetching the restaurant data", err.message);
+        res.status(500).send({
+            message: "Some error occured while fetching the Restaurants"
+        });
+    }
+}
+
+exports.getDataOnRating = async (req,res)=>{
+    try{
+        const rating = req.params.rating;
+        const dataObj = await Restaurant.find({rating : rating});
+        res.status(200).send(dataObj);
+
+    }catch(err){
+        console.log("Error while fetching the restaurant data", err.message);
+        res.status(500).send({
+            message: "Some error occured while fetching the Restaurants"
+        });
     }
 }

@@ -20,4 +20,27 @@ module.exports = (app)=>{
 
     app.get("/api/restaurant/",restController.restFetchData);
 
+    /**
+     * Getting the Types Restaurant Category
+     * GET /api/restaurant/categories
+     */
+    app.get("/api/restaurant/categories",restController.getCategory);
+
+    /**
+     * Getting data based on CategoryName
+     * GET /api/restaurant/categories/categoryName
+     */
+    app.get("/api/restaurant/categories/:categoryName",restController.getDataOnCategory);
+
+    /**
+     * Getting data based on the _ID
+     * GET /api/restaurant/id
+     */
+    app.get("/api/restaurant/:id",restController.getDataOnId);
+
+    /**
+     * Getting data based on the Rating
+     * GET /api/restaurant/rating/ratingValue
+     */
+     app.get("/api/restaurant/rating/:rating",restController.getDataOnRating);
 }

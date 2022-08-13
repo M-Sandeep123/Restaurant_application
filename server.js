@@ -29,7 +29,7 @@ db.once("open",()=>{
     /**
      * When server I should clear the DB data and initilize the db
      */
-    init();
+    //init();
 });
 
 async function init(){
