@@ -37,3 +37,21 @@ exports.restData = async (req,res)=>{
         })
     }
 }
+
+exports.restFetchData = async (req, res) => {
+    /**
+     * Fetching Restaurants data from the data base
+     */
+    try {
+        const obj = await Restaurant.find();
+        res.status(200).send({
+            "restaurants": obj,
+            "message": "Restaurant fetched successfully"
+        });
+    } catch (err) {
+        console.log("Error while fetching the restaurant data", err.message);
+        res.status(500).send({
+            message: "Some error occured while fetching the Restaurants"
+        })
+    }
+}

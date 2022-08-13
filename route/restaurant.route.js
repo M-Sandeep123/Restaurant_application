@@ -13,4 +13,11 @@ module.exports = (app)=>{
      */
     app.post("/api/restaurant/add",[midValid.restValidation],restController.restData);
 
+    /**
+     * To get all the Restaurant data from the database
+     * GET /api/restaurant/ --> end point
+     */
+
+    app.get("/api/restaurant/",restController.restFetchData);
+
 }
