@@ -50,4 +50,16 @@ module.exports = (app)=>{
       * PUT /api/restaurant/id
       */
      app.put("/api/restaurant/:id",[midValid.updateValid],restController1.upDateRestaurant);
+
+     /**
+      * Deleting the Restaurant data based on _ID
+      * DELETE /api/restaurant/id 
+      */
+     app.delete("/api/restaurant/:id",restController1.deleteOnId);
+
+     /**
+      * Deleting the all Restaurants data from the database
+      * DELETE  /api/restaurant/
+      */
+     app.delete("/api/restaurant/",restController1.deleteAll);
 }
