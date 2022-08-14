@@ -3,6 +3,7 @@
  */
 
 const restController = require("../controller/restData.controller");
+const restController1 = require("../controller/restUpDel.controller");
 const midValid = require("../middleWare/validatingRestData.middleware");
 
 module.exports = (app)=>{
@@ -43,4 +44,10 @@ module.exports = (app)=>{
      * GET /api/restaurant/rating/ratingValue
      */
      app.get("/api/restaurant/rating/:rating",restController.getDataOnRating);
+
+     /**
+      * Updating the Restaurant data
+      * PUT /api/restaurant/id
+      */
+     app.put("/api/restaurant/:id",[midValid.updateValid],restController1.upDateRestaurant);
 }
