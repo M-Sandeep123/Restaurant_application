@@ -20,7 +20,6 @@ const restSchema = new mongoose.Schema({
     imageURL : {
         type : String,
         required : true,
-        unique : true
     },
     location : {
         type : String,
